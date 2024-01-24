@@ -1,0 +1,17 @@
+services:
+  minio:
+    restart: always
+    image: whatwewant/minio:${SERVICE_MINIO_IMAGE_VERSION}
+    # ports:
+    #   - 0.0.0.0:${SERVICE_MINIO_PORT}:9000
+    #   - 0.0.0.0:${SERVICE_MINIO_CONSOLE_PORT}:9001
+    environment:
+      MINIO_ROOT_USER: ${SERVICE_MINIO_USERNAME}
+      MINIO_ROOT_PASSWORD: ${SERVICE_MINIO_PASSWORD}
+    volumes:
+      - ${SERVICE_DATA}:/data
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress
