@@ -10,6 +10,8 @@ services:
       MINIO_ROOT_PASSWORD: ${SERVICE_MINIO_PASSWORD}
     volumes:
       - ${SERVICE_DATA}:/data
+    mem_limit: ${SERVICE_MINIO_MEMORY_LIMIT}
+    cpus: ${SERVICE_MINIO_CPU_LIMIT}
       
 networks:
   default:
